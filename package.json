@@ -1,0 +1,15 @@
+{
+  "name": "StreamingNodeJS",
+  "version": "1.0.0",
+  "description": "Aplicacion de Streaming con Express y Socket.IO",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Daniel",
+  "license": "MIT",
+  "dependencies": {
+    "express": "^4.17.1",
+    "socket.io": "^4.0.0"
+  }
+}
