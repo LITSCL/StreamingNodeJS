@@ -2,11 +2,10 @@
 <html lang="es">
 <head>
     <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Emisor</title>
     <link rel="stylesheet" href="styles.css">
     <script src="socket.io/socket.io.js"></script> <!-- Aquí se carga la librería de Socket.IO (La que permite la comunicación bidireccional). -->
-    <title>Emisor</title>
 </head>
 <body>
     <button id="boton">Emitir</button>
@@ -52,14 +51,14 @@
             socket.emit("stream", canvas.toDataURL("image/webp")); //Aquí se le mandan los frames a los demas sockets, el método "toDataURL", envía la imagen en forma de datos y su argumento indica el formato de la imagen.
         }
 
-        boton.addEventListener("click", () => {
+        boton.addEventListener("click", function() {
             navigator.getUserMedia = (navigator.getUserMedia || navigator.webkitGetUserMedia || navigator.mozGetUserMedia || navigator.msgGetUserMedia); //En esta variable se almacena el API a utilizar (Se usa el OR, porque no todos los navegadores soportan las mismas APIS), si no funciona el primer API, se usa el segundo, si no funciona el segundo api, se usa el tercero.
 
-            if(navigator.getUserMedia) {
+            if (navigator.getUserMedia) {
                 navigator.getUserMedia({video: true, audio: false}, cargarCamara, errorCamara); //Aquí se esta intentando acceder a la camara, el primer parámetro es un JSON con los dispositivos que se desean acceder, el segundo es una función para cargar la camara y el tercer argumento es una función a ejecutar si no se pudo acceder a la camara.
             }
 
-            var intervalo = setInterval(() => {
+            var intervalo = setInterval(function() {
                 verVideo(video, context);
             }, 30); //Cada 30ms se ejecuta la función "verVideo()".
         });
